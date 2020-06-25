@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <style>
       body {
@@ -65,17 +65,17 @@
       }
 
       table {
-      	margin-top: 3px;
+        margin-top: 3px;
         font-family: arial, sans-serif;
         width: 100%;
         text-align: center
       }
 
       th {
-				background-color: black;
+        background-color: black;
         color: white;
       }
-			
+
 
       button.accordion {
         background-color: #eee;
@@ -116,6 +116,55 @@
         /* Unicode character for "minus" sign (-) */
       }
 
+      .dropbtn {
+        background-color: #66188D;
+        color: white;
+        padding-left: 6px;
+        padding-right: 6px;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+      }
+			
+			hr {
+				margin: 0px;
+			}
+
     </style>
 
   </head>
@@ -147,7 +196,21 @@
               <td>Graph Interpretation</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td>
+                <div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+											<hr>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+											<hr>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>BIO101</td>
@@ -155,7 +218,17 @@
               <td>Data Interpretation</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td><div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div></td>
             </tr>
             <tr>
               <td>MAT101</td>
@@ -163,7 +236,17 @@
               <td>Graph Manipulation</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td><div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div></td>
             </tr>
             <tr>
               <td>CHM101</td>
@@ -171,7 +254,17 @@
               <td>Graphs n Stuff</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td><div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div></td>
             </tr>
           </table>
         </div>
@@ -198,7 +291,17 @@
               <td>Data Stuff</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td><div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div></td>
             </tr>
             <tr>
               <td>COM100</td>
@@ -206,7 +309,17 @@
               <td>Graphs in the Media</td>
               <td>4/20/69</td>
               <td>4:20 pm</td>
-              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+              <td><div class="dropdown">
+                  <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                    <div class="dropdown-content">
+                      <a href="#">Open</a>
+                      <a href="#">Export to PDF</a>
+                      <a href="#">Shareable Link</a>
+                      <a href="#">Ready for Review</a>
+
+                    </div>
+										</button>
+                </div></td>
             </tr>
           </table>
         </div>
