@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   <head>
+    <title>Student Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <style>
       table,
       tr {
@@ -35,6 +42,7 @@
       table {
         font-family: arial, sans-serif;
         width: 100%;
+
       }
 
       th {
@@ -67,7 +75,7 @@
         overflow: hidden;
       }
 
-      .accordion::after {
+      .accordion:after {
         content: '\02795';
         /* Unicode character for "plus" sign (+) */
         font-size: 15px;
@@ -76,7 +84,7 @@
         margin-left: 5px;
       }
 
-      .active::after {
+      .active:after {
         content: "\2796";
         /* Unicode character for "minus" sign (-) */
       }
@@ -88,62 +96,75 @@
       }
 
     </style>
+
   </head>
 
   <body>
-    <button class="accordion">Open Assignments</button>
-    <div class="panel">
-      <table id="openTable">
-        <tr>
-          <th class="Course">Course</th>
-          <th class="Course">Section</th>
-          <th class="Assignment">Assignment</th>
-          <th class="Course">Due Date</th>
-          <th class="Course">Due Time</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>ENG101</td>
-          <td>F21A</td>
-          <td>Graph Interpretation</td>
-          <td>4/20/69</td>
-          <td>4:20 pm</td>
-          <td><button class="morebtn">...</button></td>
-        </tr>
-        <tr>
-          <td>BIO101</td>
-          <td>F21B</td>
-          <td>Data Interpretation</td>
-          <td>4/20/69</td>
-          <td>4:20 pm</td>
-          <td><button class="morebtn">...</button></td>
-        </tr>
-      </table>
+
+
+    <div class="container-fluid">
+
+
+      <button class="accordion">Open Assignments</button>
+      <div class="panel">
+
+        <table id="openTable">
+          <tr>
+            <th class="Course">Course</th>
+            <th class="Course">Section</th>
+            <th class="Assignment">Assignment</th>
+            <th class="Course">Due Date</th>
+            <th class="Course">Due Time</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>ENG101</td>
+            <td>F21A</td>
+            <td>Graph Interpretation</td>
+            <td>4/20/69</td>
+            <td>4:20 pm</td>
+            <td><button class="morebtn">...</button></td>
+          </tr>
+          <tr>
+            <td>BIO101</td>
+            <td>F21B</td>
+            <td>Data Interpretation</td>
+            <td>4/20/69</td>
+            <td>4:20 pm</td>
+            <td><button class="morebtn">...</button></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <button class="accordion">Archived Assignments</button>
+      <div class="panel">
+
+        <table id="archiveTable">
+          <tr>
+            <th class="Course">Course</th>
+            <th class="Course">Section</th>
+            <th class="Assignment">Assignment</th>
+            <th class="Course">Due Date</th>
+            <th class="Course">Due Time</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>CIS101</td>
+            <td>F21C</td>
+            <td>Data Stuff</td>
+            <td>4/20/69</td>
+            <td>4:20 pm</td>
+            <td><button class="morebtn">...</button></td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <button class="accordion">Archived Assignments</button>
-    <div class="panel">
-      <table id="archiveTable">
-        <tr>
-          <th class="Course">Course</th>
-          <th class="Course">Section</th>
-          <th class="Assignment">Assignment</th>
-          <th class="Course">Due Date</th>
-          <th class="Course">Due Time</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>CIS101</td>
-          <td>F21C</td>
-          <td>Data Stuff</td>
-          <td>4/20/69</td>
-          <td>4:20 pm</td>
-          <td><button class="morebtn">...</button></td>
-        </tr>
-      </table>
-    </div>
+
     <script>
       var acc = document.getElementsByClassName("accordion");
       var i;
+
       for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
           this.classList.toggle("active");
@@ -157,6 +178,7 @@
       }
 
     </script>
+
   </body>
 
 </html>
