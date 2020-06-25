@@ -2,15 +2,44 @@
 <html lang="en">
 
   <head>
-    <title>Student Dashboard</title>
+    <title>Data Somethings: Student Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+
+      /* Style the header */
+      .header {
+        padding: 8px;
+        padding-left: 25px;
+        text-align: left;
+        background: #66188D;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+
+      /* Style the footer */
+      /* Footer */
+      .footer {
+        padding: 8px;
+        text-align: center;
+        background: #66188D;
+        color: white;
+      }
+
       table,
       tr {
         border-collapse: collapse;
@@ -30,49 +59,47 @@
         padding: 5px;
       }
 
-      tr {
-        border-bottom: 1px solid blueviolet;
-        font-size: 15px;
-      }
 
       td {
         text-align: center;
       }
 
       table {
+      	margin-top: 3px;
         font-family: arial, sans-serif;
         width: 100%;
-
+        text-align: center
       }
 
       th {
-        background-color: black;
+				background-color: black;
         color: white;
       }
+			
 
-      .accordion {
+      button.accordion {
         background-color: #eee;
         color: #444;
         cursor: pointer;
         padding: 18px;
         width: 100%;
-        border: 0.5px solid blueviolet;
+        border: 0px solid blueviolet;
         text-align: left;
         outline: none;
         font-size: 20px;
         transition: 0.4s;
       }
 
-      .active,
-      .accordion:hover {
+      button.active,
+      button.accordion:hover {
         background-color: #ccc;
       }
 
-      .panel {
+      div.panel {
         padding: 0 10px;
-        display: none;
-        background-color: white;
+        max-height: 0;
         overflow: hidden;
+        transition: max-height 0.2s ease-out;
       }
 
       .accordion:after {
@@ -89,76 +116,110 @@
         /* Unicode character for "minus" sign (-) */
       }
 
-      .morebtn {
-        font-family: arial, sans-serif;
-        font-size: 15px;
-        padding-bottom: 8px;
-      }
-
     </style>
 
   </head>
 
   <body>
+    <!-- Set up the header -->
+    <div class="header">
+      <h1>Data Somethings</h1>
+    </div>
+    <br>
 
-
-    <div class="container">
-
-
+    <div class="container-fluid">
       <button class="accordion">Open Assignments</button>
       <div class="panel">
+        <div class="table-responsive">
 
-        <table id="openTable">
-          <tr>
-            <th class="Course">Course</th>
-            <th class="Course">Section</th>
-            <th class="Assignment">Assignment</th>
-            <th class="Course">Due Date</th>
-            <th class="Course">Due Time</th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>ENG101</td>
-            <td>F21A</td>
-            <td>Graph Interpretation</td>
-            <td>4/20/69</td>
-            <td>4:20 pm</td>
-            <td><button class="morebtn">...</button></td>
-          </tr>
-          <tr>
-            <td>BIO101</td>
-            <td>F21B</td>
-            <td>Data Interpretation</td>
-            <td>4/20/69</td>
-            <td>4:20 pm</td>
-            <td><button class="morebtn">...</button></td>
-          </tr>
-        </table>
+          <table class="table table-hover" id="openTable">
+            <tr>
+              <th class="Course">Course</th>
+              <th class="Course">Section</th>
+              <th class="Assignment">Assignment</th>
+              <th class="Course">Due Date</th>
+              <th class="Course">Due Time</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>ENG101</td>
+              <td>F21A</td>
+              <td>Graph Interpretation</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+            <tr>
+              <td>BIO101</td>
+              <td>F21B</td>
+              <td>Data Interpretation</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+            <tr>
+              <td>MAT101</td>
+              <td>F21Q</td>
+              <td>Graph Manipulation</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+            <tr>
+              <td>CHM101</td>
+              <td>F28W</td>
+              <td>Graphs n Stuff</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+          </table>
+        </div>
 
       </div>
 
-      <button class="accordion">Archived Assignments</button>
+
+      <button class="accordion" style="margin-top: 20px">Archived Assignments</button>
       <div class="panel">
+        <div class="table-responsive">
 
-        <table id="archiveTable">
-          <tr>
-            <th class="Course">Course</th>
-            <th class="Course">Section</th>
-            <th class="Assignment">Assignment</th>
-            <th class="Course">Due Date</th>
-            <th class="Course">Due Time</th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>CIS101</td>
-            <td>F21C</td>
-            <td>Data Stuff</td>
-            <td>4/20/69</td>
-            <td>4:20 pm</td>
-            <td><button class="morebtn">...</button></td>
-          </tr>
-        </table>
+          <table class="table table-hover" id="archiveTable">
+            <tr>
+              <th class="Course">Course</th>
+              <th class="Course">Section</th>
+              <th class="Assignment">Assignment</th>
+              <th class="Course">Due Date</th>
+              <th class="Course">Due Time</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>CIS101</td>
+              <td>F21C</td>
+              <td>Data Stuff</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+            <tr>
+              <td>COM100</td>
+              <td>F27A</td>
+              <td>Graphs in the Media</td>
+              <td>4/20/69</td>
+              <td>4:20 pm</td>
+              <td><button class="morebtn"><i class='fas fa-ellipsis-h'></i></button></td>
+            </tr>
+          </table>
+        </div>
       </div>
+    </div>
+
+    <br>
+
+    <!-- Set up the footer -->
+    <div class="footer">
+      <h2>
+        ...
+      </h2>
     </div>
 
     <script>
@@ -166,15 +227,20 @@
       var i;
 
       for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
+        acc[i].onclick = function() {
           this.classList.toggle("active");
           var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
           } else {
-            panel.style.display = "block";
+            panel.style.maxHeight = panel.scrollHeight + "px";
           }
-        });
+        }
+      }
+
+      if (acc.length > 0) {
+        acc[0].classList.add("active");
+        acc[0].nextElementSibling.style.maxHeight = acc[0].nextElementSibling.scrollHeight + "px";
       }
 
     </script>
