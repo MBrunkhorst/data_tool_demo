@@ -51,7 +51,129 @@
           transition: margin-right .5s;
           padding: 16px;
         }
-				
+
+
+        [data-tooltip] {
+          display: inline-block;
+          position: relative;
+          cursor: help;
+          color: purple;
+          font-weight: bold;
+        }
+
+        /* Tooltip styling */
+        [data-tooltip]:before {
+          content: attr(data-tooltip);
+          display: none;
+          position: absolute;
+          background: #000;
+          color: #fff;
+          padding: 4px 8px;
+          font-size: 14px;
+          line-height: 1.4;
+          min-width: 100px;
+          text-align: center;
+          border-radius: 4px;
+        }
+
+
+        /* Dynamic horizontal centering */
+        [data-tooltip-position="top"]:before {
+          left: 50%;
+          -ms-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+
+        [data-tooltip-position="top"]:before {
+          bottom: 100%;
+          margin-bottom: 6px;
+        }
+
+        /* Tooltip arrow styling/placement */
+        [data-tooltip]:after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          border-color: transparent;
+          border-style: solid;
+        }
+
+        /* Dynamic horizontal centering for the tooltip */
+        [data-tooltip-position="top"]:after {
+          left: 50%;
+          margin-left: -6px;
+        }
+
+        [data-tooltip-position="top"]:after {
+          bottom: 100%;
+          border-width: 6px 6px 0;
+          border-top-color: #000;
+        }
+
+        /* Show the tooltip when hovering */
+        [data-tooltip]:hover:before,
+        [data-tooltip]:hover:after {
+          display: block;
+          z-index: 50;
+        }
+
+        .btn {
+          background-color: white;
+          font-size: 32px;
+          border: none;
+        }
+
+        /* The Modal (background) */
+        .modal {
+          display: none;
+          /* Hidden by default */
+          position: absolute;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 10px;
+          /* Location of the box */
+          left: 25%;
+          top: 5%;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+          background-color: rgb(0, 0, 0);
+          /* Fallback color */
+          background-color: rgba(0, 0, 0, 0);
+          /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 0px;
+          border: 1px solid #888;
+          width: 48%;
+        }
+
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: left;
+          font-size: 28px;
+          font-weight: bold;
+					margin-bottom: 0px;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
 
       </style>
 
@@ -65,42 +187,100 @@
         </div>
         <br>
         <div class="container-fluid">
-          <h1 style="text-align: center">
-            Interpret Data Source
-          </h1>
-					<p>
-					Take a look at the data source displayed below. Make a few observations about the information displayed in the graph. Make note of things like: variables, relationships between variables, and the information the graph is relaying.
-					</p>
           <div class="row">
-            <div class="col-6 border-right">
-              <div class="card">
-                <img class="card-img-top" src="https://i.imgur.com/od0dSzo.png" alt="Card image" style="width:100%">
+            <div class="col-11">
+              <h1 style="text-align: left">
+                Interpret Data Source
+              </h1>
+            </div>
+            <div class="col-1">
+              <button class=btn id="myBtn"><i class='far fa-question-circle'></i></button>
+              
+
               </div>
             </div>
-            <div class="col-6">
-              <!-- The action tells us what page to send the information to... so this i assume will be my final report page where they can get a shareable link or print pdf? -->
-
-              <form action="#">
-                <div class="form-group">
-
-                  <textarea class="form-control" rows="4" id="textarea" name="text">
-							</textarea>
+            <div class="row">
+              <div class="col-6 border-right">
+                <p>
+                  Take a look at the data source displayed below.
+                </p>
+                <div class="card">
+                  <img class="card-img-top" src="https://i.imgur.com/od0dSzo.png" alt="Card image" style="width:100%">
                 </div>
+              </div>
+              <div class="col-6">
+                <!-- The action tells us what page to send the information to... so this i assume will be my final report page where they can get a shareable link or print pdf? -->
+                <p>
+                  Make a few observations about the information displayed in the graph. Make note of things like: <span data-toggle="tooltip" data-placement="top" style="color: purple" title="A variable is an element, factor, or any other category that you are trying to measure.">variables</span>, <span data-toggle="tooltip" data-placement="top" style="color: purple" title="Relationships between variables explain how the data in one category affects or is affected by the data in another">relationships between variables</span>, and the information the graph is relaying.
+                </p>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+                <form action="#">
+                  <div class="form-group">
+
+                    <textarea class="form-control" rows="4" id="textarea" name="text">
+							</textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <br>
+        <br>
 
-      <!-- Set up the footer -->
-      <div class="footer">
-        <h2>
-          ...
-        </h2>
-      </div>
+        <!-- Set up the footer -->
+        <div class="footer">
+          <h2>
+            ...
+          </h2>
+        </div>
+			<div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close" style="margin:0px">&times;</span>
+                   <div class="card" style="border:0px">
+    <div class="card-body">
+      <h5 class="card-title" style="margin: 0px">Sample Observation</h5>
+      <img class="card-img-top" src="https://i.imgur.com/lNDF1Oh.png" alt="Card image">
+      <p class="card-text" style="font-size: 14px">The information in the data source represents the percentage of people who take different modes of transportation over various years. It shows that overtime, trains have remained around the same percentage, cars have increased significantly, the tube has remained around the same, and buses have decreased significantly.</p>
+    </div>
+  </div>
+                </div>
+								</div>
+      <script>
+        $(document).ready(function() {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
+      </script>
+
     </body>
 
   </html>
