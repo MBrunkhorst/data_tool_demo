@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+    <!DOCTYPE html>
   <html lang="en">
 
     <head>
@@ -11,7 +11,8 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
       <script src='https://kit.fontawesome.com/a076d05399.js'></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
 
       <style>
         body {
@@ -266,15 +267,22 @@
           transition: margin-right .5s;
           padding: 0px;
         }
-					.btn {
-				vertical-align: baseline;
-				margin-top: 13px;
-				color: whitesmoke;
-				margin-right: 8px;
-				padding: 2px;
-				margin-left: 8px;
-				
-			}
+
+        .signoutbtn {
+          vertical-align: baseline;
+          
+          color: whitesmoke;
+          margin-right: 8px;
+          padding: 2px;
+          margin-left: 8px;
+					background-color: #81818100;
+					border: none;
+
+        }
+
+        #signoutbtn {
+          float: right;
+        }
 
         /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
         @media screen and (max-height: 450px) {
@@ -295,13 +303,23 @@
       <!-- Set up the header -->
       <div id="main">
         <div class="header">
-			<div class="row">
-			<button type="button" class="btn" id="hambtn" >
-          <span class="glyphicon glyphicon-menu-hamburger" style="font-size: 35px"></span>
-        </button>
-			<h1>Data Somethings</h1>
-			</div>
-      </div>
+          <div class="row">
+            <div class="col-1">
+              <button class="signoutbtn" id="hambtn"><i class="material-icons" style='font-size:35px'>menu</i>
+              </button>
+            </div>
+            <div class="col-6">
+              <h1>Data Somethings</h1>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-1">
+              <form action="https://swagdragon420.github.io/swagdragon420.github.io/index.html">
+							<button onclick="https://swagdragon420.github.io/swagdragon420.github.io/index.html" style='font-size:30px' class="signoutbtn" id="signoutbtn"><i class='fas fa-sign-out-alt'></i></button>
+							</form>
+            </div>
+          </div>
+        </div>
         <br>
 
         <div class="container-fluid">
@@ -505,6 +523,7 @@
             ...
           </h2>
         </div>
+				
         <div id="mySidebar" class="sidebar">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
           <a href="javascript:void(0)" class="archivebtn" onclick="archive()"><i class='fas fa-archive'></i></a>
