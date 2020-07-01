@@ -1,0 +1,614 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+    <head>
+      <title>Data Somethings: Faculty Dashboard</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+      <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+        }
+
+        /* Style the header */
+        .header {
+          padding: 8px;
+          padding-left: 25px;
+          text-align: left;
+          background: #2EA3C3;
+          color: white;
+        }
+
+        .header h1 {
+          font-size: 30px;
+        }
+
+
+        /* Style the footer */
+        /* Footer */
+        .footer {
+          padding: 8px;
+          text-align: center;
+          background: #2EA3C3;
+          color: white;
+        }
+
+        table,
+        tr {
+          border-collapse: collapse;
+          font-size: 15px;
+        }
+
+        #Course {
+          width: 100px;
+        }
+
+        #Assignment {
+          width: 250px;
+        }
+
+        th,
+        td {
+          padding: 5px;
+        }
+
+
+        td {
+          text-align: center;
+        }
+
+        table {
+          margin-top: 3px;
+          font-family: arial, sans-serif;
+          width: 100%;
+          text-align: center
+        }
+
+        th {
+          background-color: black;
+          color: white;
+        }
+
+
+        button.accordion {
+          background-color: #eee;
+          color: #444;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          border: 0px solid blueviolet;
+          text-align: left;
+          outline: none;
+          font-size: 20px;
+          transition: 0.4s;
+        }
+
+        button.active,
+        button.accordion:hover {
+          background-color: #ccc;
+        }
+
+        div.panel {
+          padding: 0 10px;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.2s ease-out;
+        }
+
+        .accordion:after {
+          content: '\02795';
+          /* Unicode character for "plus" sign (+) */
+          font-size: 15px;
+          color: #777;
+          float: right;
+          margin-left: 5px;
+        }
+
+        .active:after {
+          content: "\2796";
+          /* Unicode character for "minus" sign (-) */
+        }
+
+        .dropbtn {
+          background-color: #2EA3C3;
+          color: white;
+          padding-left: 6px;
+          padding-right: 6px;
+          font-size: 15px;
+          border: none;
+          cursor: pointer;
+          border-radius: 8px;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          right: 0;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 5px 10px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+          background-color: #66188D;
+        }
+
+        hr {
+          margin: 0px;
+        }
+
+        body {
+          font-family: "Lato", sans-serif;
+        }
+
+        .btn .details {
+          border: none;
+          background-color: inherit;
+          font-size: 16px;
+          cursor: pointer;
+          display: inline-block;
+        }
+
+        .sidebar {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          right: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+        }
+
+
+        .sidebar p {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 15px;
+          color: #f1f1f1;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .sidebar .col {
+          font-size: 20px;
+          color: #f1f1f1;
+          text-align: center;
+        }
+
+        .sidebar .closebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+          margin-top: 10px;
+        }
+
+        .sidebar .archivebtn {
+          position: absolute;
+          top: 0;
+          right: 70px;
+          font-size: 25px;
+          margin-left: 50px;
+          margin-top: 22px;
+        }
+
+        .sidebar h1 {
+          position: absolute;
+          top: 0;
+          font-size: 36px;
+          margin-top: 15px;
+          padding-left: 32px;
+          text-decoration: none;
+          color: #f1f1f1;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .sidebar h4 {
+          color: #f1f1f1;
+          padding-left: 32px;
+        }
+
+        .sidebar hr {
+          border: 1px solid #818181;
+          margin: 10px;
+        }
+
+
+        .openbtn {
+          font-size: 20px;
+          cursor: pointer;
+          background-color: #111;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+        }
+
+        .openbtn:hover {
+          background-color: #444;
+        }
+
+        #main {
+          transition: margin-right .5s;
+          padding: 0px;
+        }
+					.btn {
+				vertical-align: baseline;
+				margin-top: 13px;
+				color: whitesmoke;
+				margin-right: 8px;
+				padding: 2px;
+				margin-left: 8px;
+				
+			}
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+          .sidebar {
+            padding-top: 15px;
+          }
+
+          .sidebar a {
+            font-size: 18px;
+          }
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+      <!-- Set up the header -->
+      <div id="main">
+        <div class="header">
+			<div class="row">
+			<button type="button" class="btn" id="hambtn" >
+          <span class="glyphicon glyphicon-menu-hamburger" style="font-size: 35px"></span>
+        </button>
+			<h1>Data Somethings</h1>
+			</div>
+      </div>
+        <br>
+
+        <div class="container-fluid">
+          <button class="accordion">Open Assignments</button>
+          <div class="panel">
+            <div class="table-responsive">
+
+              <table class="table table-hover" id="openTable">
+                <tr>
+                  <th class="Course">Course</th>
+                  <th class="Course">Section</th>
+                  <th class="Assignment">Assignment</th>
+                  <th class="Course">Due Date</th>
+                  <th class="Course">Due Time</th>
+                  <th><i class='fas fa-lock'></i></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">ENG101</td>
+                  <td class="clickable" onclick="openNav()">F21A</td>
+                  <td class="clickable" onclick="openNav()">Graph Interpretation</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockGraphInt" value="LockGraphInt"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">BIO101</td>
+                  <td class="clickable" onclick="openNav()">F21B</td>
+                  <td class="clickable" onclick="openNav()">Data Interpretation</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockDataInt" value="LockDataInt"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">MAT101</td>
+                  <td class="clickable" onclick="openNav()">F21Q</td>
+                  <td class="clickable" onclick="openNav()">Graph Manipulation</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockGraphManip" value="LockGraphManip"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">CHM101</td>
+                  <td class="clickable" onclick="openNav()">F28W</td>
+                  <td class="clickable" onclick="openNav()">Graphs n Stuff</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockGraphStuff" value="LockGraphStuff"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+
+          </div>
+
+
+          <button class="accordion" style="margin-top: 20px">Archived Assignments</button>
+          <div class="panel">
+            <div class="table-responsive">
+
+              <table class="table table-hover" id="archiveTable">
+
+                <tr>
+                  <th class="Course">Course</th>
+                  <th class="Course">Section</th>
+                  <th class="Assignment">Assignment</th>
+                  <th class="Course">Due Date</th>
+                  <th class="Course">Due Time</th>
+                  <th><i class='fas fa-lock'></i></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">CIS101</td>
+                  <td class="clickable" onclick="openNav()">F21C</td>
+                  <td class="clickable" onclick="openNav()">Data Stuff</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockDataStuff" value="LockDataStuff"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="clickable" onclick="openNav()">COM100</td>
+                  <td class="clickable" onclick="openNav()">F27A</td>
+                  <td class="clickable" onclick="openNav()">Graphs in the Media</td>
+                  <td class="clickable" onclick="openNav()">4/20/69</td>
+                  <td class="clickable" onclick="openNav()">4:20 pm</td>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="LockGraphMedia" value="LockGraphMedia"></form>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class='fas fa-ellipsis-h'></i>
+                        <div class="dropdown-content">
+                          <a href="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">Open Assignment</a>
+                          <hr>
+                          <a href="#">Export to PDF</a>
+                          <a href="#">Shareable Link</a>
+                          <hr>
+                          <a href="#">Ready for Review</a>
+
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <!-- Set up the footer -->
+        <div class="footer">
+          <h2>
+            ...
+          </h2>
+        </div>
+        <div id="mySidebar" class="sidebar">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+          <a href="javascript:void(0)" class="archivebtn" onclick="archive()"><i class='fas fa-archive'></i></a>
+          <h1>
+            Data Interpretations
+          </h1>
+          <hr>
+          <p>
+            words words words words words words words more words words words words words poop words words words.
+          </p>
+          <hr>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col" style="margin-left: 16px">Due Date:</div>
+              <div class="col">Due Time:</div>
+              <div class="col">Lock <i class='fas fa-lock'></i></div>
+            </div>
+            <div class="row">
+              <div class="col" style="margin-left: 16px">4/20/69</div>
+              <div class="col">4:20 pm</div>
+              <div class="col">
+                <form action="/action_page.php"><input type="checkbox" id="LockDataInt1" value="LockDataInt"></form>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-6"></div>
+
+
+            <div class="col-6">
+              <form action="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">
+                <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html" class="btn btn-secondary" style="padding: 8px 90px">Open</button>
+              </form>
+            </div>
+
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-2">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="DuplicateButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 8px">
+                  Duplicate
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Populated</a>
+                  <a class="dropdown-item" href="#">Unpopulated</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-2">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 8px 14px">
+                  Share
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Export PDF</a>
+                  <a class="dropdown-item" href="#">Shareable Link</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+          acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          }
+        }
+
+        if (acc.length > 0) {
+          acc[0].classList.add("active");
+          acc[0].nextElementSibling.style.maxHeight = acc[0].nextElementSibling.scrollHeight + "px";
+        }
+
+        function openNav() {
+          document.getElementById("mySidebar").style.width = "500px";
+          document.getElementById("main").style.marginRight = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+          document.getElementById("main").style.marginRight = "0";
+        }
+
+      </script>
+
+    </body>
+
+  </html>
