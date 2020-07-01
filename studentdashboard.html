@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+  <!DOCTYPE html>
   <html lang="en">
 
     <head>
@@ -265,6 +265,20 @@
           transition: margin-right .5s;
           padding: 0px;
         }
+				
+				 .signoutbtn {
+          
+          color: whitesmoke;
+          margin-right: 8px;
+          padding: 2px;
+          margin-left: 8px;
+					background-color: #81818100;
+					border: none;
+        }
+
+        #signoutbtn {
+          float: right;
+        }
 
         /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
         @media screen and (max-height: 450px) {
@@ -285,8 +299,20 @@
       <!-- Set up the header -->
       <div id="main">
         <div class="header">
-          <h1>Data Somethings</h1>
+          <div class="row">
+            <div class="col-6">
+              <h1>Data Somethings</h1>
+            </div>
+            <div class="col-5">
+            </div>
+            <div class="col-1">
+              <form action="https://swagdragon420.github.io/swagdragon420.github.io/index.html">
+							<button onclick="https://swagdragon420.github.io/swagdragon420.github.io/index.html" style='font-size:30px' class="signoutbtn" id="signoutbtn"><i class='fas fa-sign-out-alt'></i></button>
+							</form>
+            </div>
+          </div>
         </div>
+				
         <br>
 
         <div class="container-fluid">
