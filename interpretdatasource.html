@@ -41,19 +41,35 @@
         /* Footer */
         .footer {
           padding: 8px;
-          text-align: center;
+          text-align: left;
           background: #66188D;
           color: white;
+					font-size: 30px;
+        }
+				
+				.signoutbtn {
+          
+          color: whitesmoke;
+          margin-right: 8px;
+          padding: 2px;
+          margin-left: 8px;
+					background-color: #81818100;
+					border: none;
         }
 
-
-        #main {
-          transition: margin-right .5s;
-          padding: 16px;
+        #signoutbtn {
+          float: right;
         }
-
-
-        [data-tooltip] {
+				
+				#nextbtn {
+					float: right;
+				}
+				
+				#backbtn {
+					float: left;
+				}
+				
+				[data-tooltip] {
           display: inline-block;
           position: relative;
           cursor: help;
@@ -181,12 +197,22 @@
 
     <body>
       <!-- Set up the header -->
-      <div id="main">
         <div class="header">
-          <h1>Data Somethings</h1>
+          <div class="row">
+            <div class="col-6">
+              <h1>Data Somethings</h1>
+            </div>
+            <div class="col-5">
+            </div>
+            <div class="col-1">
+              <form action="https://swagdragon420.github.io/swagdragon420.github.io/index.html">
+							<button onclick="https://swagdragon420.github.io/swagdragon420.github.io/index.html" style='font-size:30px' class="signoutbtn" id="signoutbtn"><i class='fas fa-sign-out-alt'></i></button>
+							</form>
+            </div>
+          </div>
         </div>
         <br>
-        <div class="container-fluid">
+       <div class="container-fluid">
           <div class="row">
             <div class="col-11">
               <h1 style="text-align: left">
@@ -226,15 +252,24 @@
               </div>
             </div>
           </div>
-        </div>
         <br>
-
-        <!-- Set up the footer -->
-        <div class="footer">
-          <h2>
-            ...
-          </h2>
-        </div>
+      <!-- Set up the footer -->
+			<div class="footer">
+        <div class="row">
+            <div class="col-1">
+						<form action="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html">
+						<button onclick="https://swagdragon420.github.io/swagdragon420.github.io/selectdatasource.html" class="signoutbtn" id="backbtn"><i class='fas fa-chevron-circle-left'></i></button>
+							</form>
+            </div>
+            <div class="col-10">
+            </div>
+            <div class="col-1">
+              <form action="https://swagdragon420.github.io/swagdragon420.github.io/selectgraph1.html">
+							<button onclick="https://swagdragon420.github.io/swagdragon420.github.io/selectgraph1.html" class="signoutbtn" id="nextbtn"><i class='fas fa-chevron-circle-right'></i></button>
+							</form>
+            </div>
+          </div>
+					</div>
 			<div id="myModal" class="modal">
 
                 <!-- Modal content -->
@@ -280,7 +315,6 @@
         }
 
       </script>
-
     </body>
 
   </html>
