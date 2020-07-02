@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Data Somethings: Faculty Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+
+      /* Style the header */
+      .header {
+        padding: 8px;
+        padding-left: 25px;
+        text-align: left;
+        background: #2EA3C3;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+			
+			.head2{
+				padding: 4px;
+				padding-left: 25px;
+        text-align: left;
+        background: #B2B2B2;
+        color: white;
+			}
+
+      /* Style the hamburger menu drop down */
+      .menudropbtn {
+        background-color: #2EA3C3;
+        color: white;
+        padding-left: 6px;
+        padding-right: 6px;
+				padding-bottom: 0px;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+
+      .menudropbtn:hover,
+      .menudropbtn:focus {
+        background-color: #178BAB;
+      }
+
+      .menudropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .menudropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .menudropdown-content a {
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .menudropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .menudropdown:hover .menudropdown-content {
+        display: block;
+      }
+
+      /* Style the sign out button*/
+      .signoutbtn {
+        vertical-align: baseline;
+
+        color: whitesmoke;
+        margin-right: 8px;
+        padding: 2px;
+        margin-left: 8px;
+        background-color: #81818100;
+        border: none;
+
+      }
+
+      #signoutbtn {
+        float: right;
+      }
+
+      /* Style the add students dropdown */
+			.addstudentdropbtn {
+  background-color: #2EA3C3;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #178BAB;
+  cursor: pointer;
+}
+
+.addstudentdropbtn:hover, .addstudentdropbtn:focus {
+  background-color: #178BAB;
+}
+
+.addstudentdropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.addstudentdropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.addstudentdropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.addstudentdropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+			
+			/* Style the footer */
+      .footer {
+        padding: 8px;
+        text-align: center;
+        background: #2EA3C3;
+        color: white;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+    <!-- Set up the header -->
+    <div class="header">
+      <div class="row">
+        <div class="col-1">
+          <!-- Set up the drop down button for the menu -->
+          <div class="menudropdown">
+            <button onclick="myFunction()" class="menudropbtn" id="menubtn"><i class="material-icons" style='font-size:35px'>menu</i></button>
+            <div id="menudropbtn" class="menudropdown-content">
+              <a href="#">Save</a>
+              <a href="#">Exit and Save</a>
+              <a href="https://swagdragon420.github.io/swagdragon420.github.io/facultydashboard.html">Exit without Saving</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-10">
+          <h1>Data Somethings</h1>
+        </div>
+        <!-- Set up the sign out button -->
+        <div class="col-1">
+          <form action="https://swagdragon420.github.io/swagdragon420.github.io/index.html">
+            <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/index.html" style='font-size:30px' class="signoutbtn" id="signoutbtn"><i class='fas fa-sign-out-alt'></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" style="border: 2px solid black">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="assignmentname">Assignment</label>
+                <input type="text" class="form-control" id="assignmentname" placeholder="Untitled">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="course">Course</label>
+                <select class="form-control" id="course">
+                  <option>--</option>
+                  <option>ENG101</option>
+                  <option>CHM101</option>
+                  <option>MAT101</option>
+                  <option>BIO101</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="section">Section</label>
+                <select class="form-control" id="section">
+                  <option>--</option>
+                  <option>F21A</option>
+                  <option>F28C</option>
+                  <option>F21C</option>
+                  <option>F21E</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Enter description here..."></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="opendate">Open Date</label>
+                <input type="date" class="form-control" id="opendate">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="opentime">Open Time</label>
+                <input type="time" class="form-control" id="opentime">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="duedate">Due Date</label>
+                <input type="date" class="form-control" id="duedate">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="duetime">Due Time</label>
+                <input type="time" class="form-control" id="duetime">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="grading">Grading</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="completion" id="completion" value="completion" checked>
+                  <label class="form-check-label" for="completion">
+                    Completion
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="grading" id="manual" value="manual">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Manual
+                  </label>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="maxscore">Max Score</label>
+                <input type="number" class="form-control" id="maxscore">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="datasources">Select Data Sources</label>
+                <button type="submit" class="btn btn-primary" id="datasources">View Options</button>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="datasources">Selected Sources</label>
+                <p>
+                  0 of 8
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+				<div class="head2">
+				<div class="addstudentdropdown">
+  <button class="addstudentdropbtn" onclick="addStudentDropFunction()">Add Students <i class="fa fa-caret-down"></i>
+  </button>
+	<div class="addstudentdropdown-content" id="myAddStudentDropdown">
+    <a href="#">Manually</a>
+    <a href="#">Import from CSV</a>
+    <a href="#">Import from LMS</a>
+  </div>
+	</div>
+	</div>
+	<table class="table">
+	<thead>
+	<tr>
+		<th>Name</th>
+		<th>Ready</th>
+		<th>Score</th>
+		<th><i class='fas fa-lock'></i></th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Adams, Jane</td>
+			<td>--</td>
+			<td>--</td>
+			<td><form action="/action_page.php"><input type="checkbox" id="LockStudent1" value="LockStudent"></form></td>
+		</tr>
+			<tr>
+			<td>Bernstein, John</td>
+			<td>--</td>
+			<td>--</td>
+			<td><form action="/action_page.php"><input type="checkbox" id="LockStudent2" value="LockStudent"></form></td>
+		</tr>	<tr>
+			<td>Clark, Bob</td>
+			<td>--</td>
+			<td>--</td>
+			<td><form action="/action_page.php"><input type="checkbox" id="LockStudent3" value="LockStudent"></form></td>
+		</tr>	<tr>
+			<td>Dominguez, Phil</td>
+			<td>--</td>
+			<td>--</td>
+			<td><form action="/action_page.php"><input type="checkbox" id="LockStudent4" value="LockStudent"></form></td>
+		</tr>
+	</tbody>
+	</table>
+				</div>
+        </div>
+      </div> 
+
+
+    <!-- Set up the footer -->
+    <br>
+    <div class="footer">
+      <h2>
+        ...
+      </h2>
+    </div>
+
+
+    <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function addStudentDropFunction() {
+  document.getElementById("myAddStudentDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.addstudentdropbtn')) {
+    var dropdowns = document.getElementsByClassName("addstudentdropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    </script>
+
+  </body>
+
+</html>
