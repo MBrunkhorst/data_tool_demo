@@ -5,6 +5,7 @@
       <title>Data Somethings: Faculty Dashboard</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="https://swagdragon420.github.io/swagdragon420.github.io/datasomethingstyle.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -27,7 +28,7 @@
         }
 
         /* Style the header */
-        .header {
+        .facultyheader {
           padding: 8px;
           padding-left: 25px;
           text-align: left;
@@ -35,7 +36,7 @@
           color: white;
         }
 
-        .header h1 {
+        .facultyheader h1 {
           font-size: 30px;
         }
 
@@ -50,17 +51,14 @@
           cursor: pointer;
           border-radius: 8px;
         }
-
         .menudropbtn:hover,
         .menudropbtn:focus {
           background-color: #2980B9;
         }
-
         .menudropdown {
           position: relative;
           display: inline-block;
         }
-
         .menudropdown-content {
           display: none;
           position: absolute;
@@ -69,18 +67,15 @@
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           z-index: 1;
         }
-
         .menudropdown-content a {
           color: black;
           padding: 5px 10px;
           text-decoration: none;
           display: block;
         }
-
         .menudropdown-content a:hover {
           background-color: #f1f1f1;
         }
-
         .menudropdown:hover .menudropdown-content {
           display: block;
         }
@@ -97,13 +92,11 @@
           border: none;
 
         }
-
         #signoutbtn {
           float: right;
         }
-
         /* Style the footer */
-        .footer {
+        .facultyfooter {
           padding: 8px;
           text-align: center;
           background: #2EA3C3;
@@ -123,7 +116,6 @@
           font-size: 20px;
           transition: 0.4s;
         }
-
         button.active,
         button.accordion:hover {
           background-color: #ccc;
@@ -349,7 +341,7 @@
       <!-- Set up the main content -->
       <div id="main">
         <!-- Set up the header -->
-        <div class="header">
+        <div class="facultyheader">
           <div class="row">
             <div class="col-1">
               <!-- Set up the drop down button for the menu -->
@@ -373,9 +365,9 @@
               </form>
             </div>
           </div>
-        </div>   
+        </div>
       <br>
-      
+
 			<!-- Set up the accordion and all content between header and footer -->
 			<div class="container-fluid">
         <!-- Set up open assignments accordion -->
@@ -548,11 +540,11 @@
         </div>
       </div>
 
-      
+
 
       <!-- Set up the footer -->
       <br>
-			<div class="footer">
+			<div class="facultyfooter">
         <h2>
           ...
         </h2>

@@ -36,3 +36,86 @@ body {
   background-color: grey;
 
 }
+
+/* Style the main content for the dashboards */
+#main {
+  transition: margin-right .5s;
+  padding: 0px;
+}
+
+/* Style the header */
+.facultyheader {
+  padding: 8px;
+  padding-left: 25px;
+  text-align: left;
+  background: #2EA3C3;
+  color: white;
+}
+
+.facultyheader h1 {
+  font-size: 30px;
+}
+
+/* Style the hamburger menu drop down - Only used in faculty header */
+.menudropbtn {
+  background-color: #2EA3C3;
+  color: white;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.menudropbtn:hover,
+.menudropbtn:focus {
+  background-color: #2980B9;
+}
+.menudropdown {
+  position: relative;
+  display: inline-block;
+}
+.menudropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.menudropdown-content a {
+  color: black;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+}
+.menudropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.menudropdown:hover .menudropdown-content {
+  display: block;
+}
+
+/* Style the sign out button - for faculty and student screens*/
+.signoutbtn {
+  vertical-align: baseline;
+
+  color: whitesmoke;
+  margin-right: 8px;
+  padding: 2px;
+  margin-left: 8px;
+  background-color: #81818100;
+  border: none;
+
+}
+#signoutbtn {
+  float: right;
+}
+
+/* Style the faculty footer */
+.facultyfooter {
+  padding: 8px;
+  text-align: center;
+  background: #2EA3C3;
+  color: white;
+}
