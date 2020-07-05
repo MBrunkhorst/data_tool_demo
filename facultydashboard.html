@@ -16,92 +16,6 @@
 
 
       <style>
-        body {
-          font-family: Arial, Helvetica, sans-serif;
-          margin: 0;
-        }
-
-        /* Style the main content */
-        #main {
-          transition: margin-right .5s;
-          padding: 0px;
-        }
-
-        /* Style the header */
-        .facultyheader {
-          padding: 8px;
-          padding-left: 25px;
-          text-align: left;
-          background: #2EA3C3;
-          color: white;
-        }
-
-        .facultyheader h1 {
-          font-size: 30px;
-        }
-
-        /* Style the hamburger menu drop down */
-        .menudropbtn {
-          background-color: #2EA3C3;
-          color: white;
-          padding-left: 6px;
-          padding-right: 6px;
-          font-size: 15px;
-          border: none;
-          cursor: pointer;
-          border-radius: 8px;
-        }
-        .menudropbtn:hover,
-        .menudropbtn:focus {
-          background-color: #2980B9;
-        }
-        .menudropdown {
-          position: relative;
-          display: inline-block;
-        }
-        .menudropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f9f9f9;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          z-index: 1;
-        }
-        .menudropdown-content a {
-          color: black;
-          padding: 5px 10px;
-          text-decoration: none;
-          display: block;
-        }
-        .menudropdown-content a:hover {
-          background-color: #f1f1f1;
-        }
-        .menudropdown:hover .menudropdown-content {
-          display: block;
-        }
-
-        /* Style the sign out button*/
-        .signoutbtn {
-          vertical-align: baseline;
-
-          color: whitesmoke;
-          margin-right: 8px;
-          padding: 2px;
-          margin-left: 8px;
-          background-color: #81818100;
-          border: none;
-
-        }
-        #signoutbtn {
-          float: right;
-        }
-        /* Style the footer */
-        .facultyfooter {
-          padding: 8px;
-          text-align: center;
-          background: #2EA3C3;
-          color: white;
-        }
 
         /* Style the accordion buttons */
         button.accordion {
@@ -110,7 +24,7 @@
           cursor: pointer;
           padding: 18px;
           width: 100%;
-          border: 0px solid blueviolet;
+          border: 0px;
           text-align: left;
           outline: none;
           font-size: 20px;
@@ -231,74 +145,6 @@
           margin: 0px;
         }
 
-        /* Style the sidepanel and its contents */
-        .sidebar {
-          height: 100%;
-          width: 0;
-          position: fixed;
-          z-index: 1;
-          top: 0;
-          right: 0;
-          background-color: #111;
-          overflow-x: hidden;
-          transition: 0.5s;
-          padding-top: 60px;
-        }
-
-        .sidebar p {
-          padding: 8px 8px 8px 32px;
-          text-decoration: none;
-          font-size: 15px;
-          color: #f1f1f1;
-          display: block;
-          transition: 0.3s;
-        }
-
-        .sidebar .col {
-          font-size: 20px;
-          color: #f1f1f1;
-          text-align: center;
-        }
-
-        .sidebar .closebtn {
-          position: absolute;
-          top: 0;
-          right: 25px;
-          font-size: 36px;
-          margin-left: 50px;
-          margin-top: 10px;
-        }
-
-        .sidebar .archivebtn {
-          position: absolute;
-          top: 0;
-          right: 70px;
-          font-size: 25px;
-          margin-left: 50px;
-          margin-top: 22px;
-        }
-
-        .sidebar h1 {
-          position: absolute;
-          top: 0;
-          font-size: 36px;
-          margin-top: 15px;
-          padding-left: 32px;
-          text-decoration: none;
-          color: #f1f1f1;
-          display: block;
-          transition: 0.3s;
-        }
-
-        .sidebar h4 {
-          color: #f1f1f1;
-          padding-left: 32px;
-        }
-
-        .sidebar hr {
-          border: 1px solid #818181;
-          margin: 10px;
-        }
 
         /* Style the buttons in the side panel */
         .btn .details {
