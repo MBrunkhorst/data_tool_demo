@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Data Somethings 3.0 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      padding: 8px;
+      padding-left: 25px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 30px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    /* Style the footer */
+    .footer {
+      padding: 8px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+      font-size: 30px;
+    }
+
+    .controlbtn {
+      border: none;
+      color: white;
+      background-color: #008CBA;
+      font-size: 16px;
+      padding: 10px 24px;
+    }
+
+    .controlbtn:hover {
+      background-color: white;
+      color: black;
+      border: 2px solid  #008CBA;
+    }
+
+    }
+  </style>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', {
+      'packages': ['corechart', 'controls', 'charteditor']
+    });
+    google.charts.setOnLoadCallback(initialize);
+
+    function initialize() {
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1k0gR_DSb03M_FBPoofgfF12a493e5wj9ycYFjUzgs3A/edit#gid=0');
+
+      query.send(drawDashboard);
+    }
+
+    function drawDashboard(response) {
+      var data = response.getDataTable();
+
+      var chartRangeSlider = new google.visualization.ControlWrapper({
+        'controlType': 'ChartRangeFilter',
+        'containerId': 'chart_range_slider_div',
+        'options': {
+          'filterColumnLabel': 'Date',
+          'enableInteractivity': false,
+          'chartArea': {
+            'height': '100%'
+          },
+          'legend': {
+            'position': 'none'
+          },
+          'hAxis': {
+            'textPosition': 'in'
+          },
+          'vAxis': {
+            'textPosition': 'none',
+            'gridlines': {
+              'color': 'none'
+            }
+          }
+        }
+      });
+      var linechart = new google.visualization.ChartWrapper({
+        chartType: 'LineChart',
+        containerId: 'linechart_div'
+      });
+      var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div')).bind(chartRangeSlider, linechart).draw(data)
+
+      changeYScaleLog = function() {
+        linechart.setOption('vAxis.logScale', true);
+        linechart.draw();
+      }
+      changeYScaleLinear = function() {
+        linechart.setOption('vAxis.logScale', false);
+        linechart.draw();
+      }
+      changeYScale = function() {
+        if (linechart.vAxis.logScale = false) {
+          linechart.setOption('vAxis.logScale', true);
+          linechart.draw();
+        } else {
+          linechart.setOption('vAxis.logScale', false);
+          linechart.draw();
+        }
+      }
+      changeXScaleLog = function() {
+        linechart.setOption('hAxis.logScale', true);
+        linechart.draw();
+      }
+      changeXScaleLinear = function() {
+        linechart.setOption('hAxis.logScale', false);
+        linechart.draw();
+      }
+      changeYDirectionReverse = function() {
+        linechart.setOption('vAxis.direction', -1);
+        linechart.draw();
+      }
+      changeYDirectionNormal = function() {
+        linechart.setOption('vAxis.direction', 1);
+        linechart.draw();
+      }
+      changeXDirectionReverse = function() {
+        linechart.setOption('hAxis.direction', -1);
+        linechart.draw();
+      }
+      changeXDirectionNormal = function() {
+        linechart.setOption('hAxis.direction', 1);
+        linechart.draw();
+      }
+      changeOrientationHorizontal = function() {
+        linechart.setOption('orientation', 'horizontal');
+        linechart.draw();
+      }
+      changeOrientationVertical = function() {
+        linechart.setOption('orientation', 'vertical');
+        linechart.draw();
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="row">
+      <div class="col-6">
+        <h1>Data Somethings</h1>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div id="dashboard_div" style="border: 1px solid #ccc">
+      <table class="columns">
+        <tbody>
+          <tr>
+            <td>
+              <h3>Controls</hs>
+                <br>
+                <button class="controlbtn" onclick="changeYScaleLog();">
+                  Y Axis Log
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeYScaleLinear();">
+                  Y Axis Linear
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeXScaleLog();">
+                  X Axis Log
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeXScaleLinear();">
+                  X Axis Linear
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeYDirectionReverse();">
+                  Y Direction Reverse
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeYDirectionNormal();">
+                  Y Direction Normal
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeXDirectionReverse();">
+                  X Direction Reverse
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeXDirectionNormal();">
+                  X Direction Normal
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeOrientationHorizontal();">
+                  Horizontal Orientation
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeOrientationVertical();">
+                  Vertical Orientation
+                </button>
+                <br>
+                <button class="controlbtn" onclick="changeYScale();">
+                  Change Y Scale
+                </button>
+            </td>
+            <td>
+              <div id="linechart_div" style="width: 700px; height: 700px;">
+              </div>
+              <div id="chart_range_slider_div" style="width: 700px; height: 50px;"></div>
+            </td>
+          </tr>
+    </div>
+  </div>
+</body>
+
+</html>

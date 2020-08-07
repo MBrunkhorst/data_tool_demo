@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Data Somethings 3.0 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      padding: 8px;
+      padding-left: 25px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 30px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    /* Style the footer */
+    .footer {
+      padding: 8px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+      font-size: 30px;
+    }
+
+    .controlbtn {
+      border: none;
+      color: white;
+      background-color: #008CBA;
+      font-size: 16px;
+      padding: 10px 24px;
+    }
+
+    .controlbtn:hover {
+      background-color: white;
+      color: black;
+      border: 2px solid #008CBA;
+    }
+
+    }
+  </style>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', {
+      packages: ['table']
+    });
+    google.charts.setOnLoadCallback(initialize);
+
+    function initialize() {
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1k0gR_DSb03M_FBPoofgfF12a493e5wj9ycYFjUzgs3A/edit#gid=0');
+
+      query.send(drawTable);
+    }
+
+    function drawTable(response) {
+      var data = response.getDataTable();
+
+      var table = new google.visualization.Table(document.getElementById('table_div'));
+
+      table.draw(data, {
+        showRowNumber: false,
+        width: '100%',
+        height: '100%'
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="row">
+      <div class="col-6">
+        <h1>Data Somethings 3.0</h1>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <p> The table below displays the data that you will use for this assignment.
+          Your objective is to select a graph type and manipulate the graph in order to accurately display the data.
+          Take a moment to look over the data and any additional information, then when you are ready to procede, click next.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <h4>Table</h4>
+        <div style="height:500px;border:1px solid #ccc; overflow:auto;">
+          <div id="table_div"></div>
+        </div>
+      </div>
+      <div class="col-8">
+        <h4> Additional Information </h4>
+        <p>The table to the left shows the daily confirmed COVID-19 cases in Arizona and Wisconsin from March 15th to August 4th. All data was collected by the CDC or something like that.
+          <br>
+          <br>
+          For this assignment, your goal is to review and accurately represent the data in a graph to show daily number of rona cases in both Arizona and Wisconsin.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10"></div>
+      <div class="col-2">
+        <button class="controlbtn" style="width: 100%;"> Next </button>
+        </div>
+        </div>
+        <br>
+  </div>
+  <div class="footer">
+    <div class="row">
+      <div class="col-1">...</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Data Somethings: Select Graph One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+
+      /* Style the header */
+      .header {
+        padding: 8px;
+        padding-left: 25px;
+        text-align: left;
+        background: #66188D;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+      h1 {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+
+      /* Style the footer */
+      /* Footer */
+      .footer {
+        padding: 8px;
+        text-align: left;
+        background: #66188D;
+        color: white;
+        font-size: 30px;
+      }
+
+      .signoutbtn {
+
+        color: whitesmoke;
+        margin-right: 8px;
+        padding: 2px;
+        margin-left: 8px;
+        background-color: #81818100;
+        border: none;
+      }
+
+      #signoutbtn {
+        float: right;
+      }
+
+      #nextbtn {
+        float: right;
+      }
+
+      #backbtn {
+        float: left;
+      }
+
+
+      #main {
+        transition: margin-right .5s;
+        padding: 16px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Set up the header -->
+    <div class="header">
+      <div class="row">
+        <div class="col-6">
+          <h1>Data Somethings</h1>
+        </div>
+        <div class="col-5">
+        </div>
+        <div class="col-1">
+          <form action="https://swagdragon420.github.io/swagdragon420.github.io/index.html">
+            <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/index.html" style='font-size:30px' class="signoutbtn" id="signoutbtn"><i class='fas fa-sign-out-alt'></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <h1>
+          Select Graph
+        </h1>
+      </div>
+      <div class="row">
+        <p> Select the graph type you would like to investigate first. </p>
+      </div>
+      <div class="card-deck">
+        <div class="row">
+          <!-- Example Pie Chart -->
+          <div class="card" id="pieChart">
+            <div class="card-body">
+              <h4 class="card-title">Pie Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/j6qXRt0.png?1">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Shows parts of a whole</li>
+                <li>Splits data into different categories</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Example Column Chart -->
+          <div class="card" id="columnChart">
+            <div class="card-body">
+              <h4 class="card-title">Column Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/F4KdVFg.png">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Shows how large values are</li>
+                <li>Splits data into different categories</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Example Bar Graph Chart -->
+          <div class="card" id="stackedColumnChart">
+            <div class="card-body">
+              <h4 class="card-title">Stacked Column Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/XwXZIdg.png">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Shows changes over time or across categories</li>
+                <li>Shows part to whole comparison</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <!-- Example Scatter Plot -->
+          <div class="card" id="scatterChart">
+            <div class="card-body">
+              <h4 class="card-title">Scatter Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/eDnnyAE.png">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Represents individual values</li>
+                <li>Shows the relationship between sets of data</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Example Line Graph -->
+          <div class="card" id="lineChart">
+            <div class="card-body">
+              <h4 class="card-title">Line Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/LkurlGU.png">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Shows changes over time</li>
+                <li>Shows how one variable changes with respect to another</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Example Area Chart -->
+          <div class="card" id="areaChart">
+            <div class="card-body">
+              <h4 class="card-title">Area Chart</h4>
+            </div>
+            <img class="card-img-top" src="https://i.imgur.com/W5eiGvo.png">
+            <div class="card-body">
+              <ul class="card-text">
+                <li>Shows changes over time</li>
+                <li>Visually represents volume</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <!-- Set up the footer -->
+    <div class="footer">
+      <div class="row">
+        <div class="col-1">
+          <form action="https://swagdragon420.github.io/swagdragon420.github.io/interpretdatasource.html">
+            <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/interpretdatasource.html" class="signoutbtn" id="backbtn"><i class='fas fa-chevron-circle-left'></i></button>
+          </form>
+        </div>
+        <div class="col-10">
+        </div>
+        <div class="col-1">
+          <form action="https://swagdragon420.github.io/swagdragon420.github.io/graph1.html">
+            <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/graph1.html" class="signoutbtn" id="nextbtn"><i class='fas fa-chevron-circle-right'></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', {
+      'packages': ['corechart', 'controls']
+    });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawDashboard);
+
+    // Callback that creates and populates a data table,
+    // instantiates a dashboard, a range slider and a pie chart,
+    // passes in the data and draws it.
+    function drawDashboard() {
+
+      // Create the data table.
+      var data = google.visualization.arrayToDataTable([
+        ['Date', 'Cases in AZ', 'Cases in WI'],
+        [new Date(2020, 2, 15), 12, 14],
+        [new Date(2020, 2, 22), 152,178],
+        [new Date(2020, 2, 29), 919, 729],
+        [new Date(2020, 3, 5), 2269, 1735],
+        [new Date(2020, 3, 12), 3539, 2897],
+        [new Date(2020, 3, 19), 4928, 3880],
+        [new Date(2020, 3, 26), 6526, 5138],
+        [new Date(2020, 4, 3), 8640, 6955],
+        [new Date(2020, 4, 10), 11118, 9238],
+        [new Date(2020, 4, 17), 13937, 11374],
+        [new Date(2020, 4, 24), 16339, 13915],
+        [new Date(2020, 4, 31), 20119, 17030],
+        [new Date(2020, 5, 7), 26889, 19771],
+        [new Date(2020, 5, 14), 35691, 21910],
+        [new Date(2020, 5, 21), 52390, 23852],
+        [new Date(2020, 5, 28), 73908, 26309],
+        [new Date(2020, 6, 5), 98084, 29800],
+        [new Date(2020, 6, 12), 122467, 34079],
+        [new Date(2020, 6, 19), 143619, 39644],
+        [new Date(2020, 6, 26), 162003, 45928],
+        [new Date(2020, 7, 2), 178467, 52087]
+      ]);
+      // Create a dashboard.
+      var dashboard = new google.visualization.Dashboard(
+        document.getElementById('dashboard_div'));
+      // Create a range slider, passing some options
+      var columnchart = new google.visualization.ChartWrapper({
+        'chartType': 'ColumnChart',
+        'containerId': 'columnchart_div',
+        'options': {
+          'legend': 'in'
+        }
+      });
+
+      var chartRangeSlider = new google.visualization.ControlWrapper({
+        'controlType': 'ChartRangeFilter',
+        'containerId': 'chart_range_slider_div',
+        'options': {
+          'filterColumnLabel': 'Date',
+          'enableInteractivity': false,
+          'chartArea': {
+            'height': '100%'
+          },
+          'legend': {
+            'position': 'none'
+          },
+          'hAxis': {
+            'textPosition': 'in'
+          },
+          'vAxis': {
+            'textPosition': 'none',
+            'gridlines': {
+              'color': 'none'
+            }
+          }
+        }
+      });
+
+      // Establish dependencies, declaring that 'filter' drives 'pieChart',
+      // so that the pie chart will only display entries that are let through
+      // given the chosen slider range.
+      dashboard.bind(chartRangeSlider, columnchart);
+
+      // Draw the dashboard.
+      dashboard.draw(data);
+
+      changeChartStacked = function() {
+        columnchart.setOption('isStacked', true);
+        columnchart.draw();
+      }
+      changeChartRegular = function() {
+        columnchart.setOption('isStacked', false);
+        columnchart.draw();
+      }
+      changeScaleLog = function() {
+        columnchart.setOption('vAxis.logScale', true);
+        columnchart.draw();
+      }
+      changeScaleLinear = function() {
+        columnchart.setOption('vAxis.logScale', false);
+        columnchart.draw();
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <!--Div that will hold the dashboard-->
+  <div id="dashboard_div" style="border: 1px solid #ccc">
+    <table class="columns">
+      <tbody>
+        <tr>
+          <td>
+            <h3>Controls</hs>
+              <br>
+              <button onclick="changeChartStacked();">
+                Stacked Column Chart
+              </button>
+              <br>
+              <button onclick="changeChartRegular();">
+                Regular Column Chart
+              </button>
+              <br>
+              <button onclick="changeScaleLog();">
+                Y Axis Logarithmic Scale
+              </button>
+              <br>
+              <button onclick="changeScaleLinear();">
+                Y Axis Linear Scale
+              </button>
+          <td>
+            <div id="columnchart_div" style="width: 700px; height: 300px;">
+            </div>
+            <div id="chart_range_slider_div" style="width: 700px; height: 50px;"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+        </tr>
+</body>
+
+</html>
