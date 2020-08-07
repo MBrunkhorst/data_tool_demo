@@ -111,7 +111,7 @@
     }
 
     .openbtn:hover {
-      background-color:#008CBA;
+      background-color: #008CBA;
       color: black;
       border: 2px solid white;
     }
@@ -163,19 +163,31 @@
         <p> Use the controls below to select the graph and manipulate it in order to accurately represent the daily COVID-19 cases in Arizona and Wisconsin. You may click on the table button at any point to view the data.</p>
       </div>
     </div>
-      <div class="row">
+    <div class="row">
       <button class="openbtn" style="left: 40px;" onclick="openNav()">View Table</button>
       <div id="mySidepanel" class="tablepanel">
         <a href="javascript:void(0)" class="closebtn1" onclick="closeNav()">×</a>
-        <a href="#"><div style="height:300px;border:1px solid #ccc; overflow:auto;">
-          <div id="table_div"></div>
-  </div>
-</a>
-</div>
-</div>
-<br>
-<div id="vis_div" style="height: 400px; width: 600px;"></div>
-  </div>
+        <a href="#">
+          <div style="height:300px;border:1px solid #ccc; overflow:auto;">
+            <div id="table_div"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <iframe src="https://swagdragon420.github.io/swagdragon420.github.io/chartEditor.html" height="600" width="1050" title="Iframe Example"></iframe>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-10"></div>
+      <div class="col-2">
+        <form action="https://swagdragon420.github.io/swagdragon420.github.io/dataSomethings3Interpret.html">
+        <button onclick="https://swagdragon420.github.io/swagdragon420.github.io/dataSomethings3Interpret.html" class="controlbtn" style="width: 100%;"> Next </button>
+      </form>
+      </div>
+      </div>
+      <br>
   <div class="footer">
     <div class="row">
       <div class="col-1">...</div>
@@ -183,14 +195,14 @@
   </div>
 
   <script>
-  function openNav() {
-  document.getElementById("mySidepanel").style.width = "350px";
-}
+    function openNav() {
+      document.getElementById("mySidepanel").style.width = "350px";
+    }
 
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
-</script>
+    function closeNav() {
+      document.getElementById("mySidepanel").style.width = "0";
+    }
+  </script>
 
 </body>
 
