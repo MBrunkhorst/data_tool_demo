@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Data Somethings 3.0 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      padding: 8px;
+      padding-left: 25px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 30px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    /* Style the footer */
+    .footer {
+      padding: 8px;
+      text-align: left;
+      background: #66188D;
+      color: white;
+      font-size: 30px;
+    }
+
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+    }
+
+    .graphbtn {
+      border: none;
+      background-color: inherit;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .default {
+      color: black;
+    }
+
+    .default:hover {
+      background: #e7e7e7;
+    }
+
+    /* Style the tab */
+    .graphtab {
+      float: left;
+      background-color: inherit;
+      width: 30%;
+      border-right: 1px solid black;
+    }
+
+    /* Style the buttons inside the tab */
+    .graphtab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 14px 28px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .graphtab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current "tab button" class */
+    .graphtab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .graphtabcontent {
+      float: left;
+      padding: 0px 12px;
+      width: 70%;
+      height: 300px;
+    }
+  </style>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the controls package.
+    google.charts.load('current', {
+      'packages': ['corechart', 'controls', 'charteditor']
+    });
+    google.charts.setOnLoadCallback(initialize);
+
+    function initialize() {
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1k0gR_DSb03M_FBPoofgfF12a493e5wj9ycYFjUzgs3A/edit#gid=0');
+
+      query.send(drawDashboard);
+    }
+
+    function drawDashboard(response) {
+      var data = response.getDataTable();
+
+      var chartRangeSlider = new google.visualization.ControlWrapper({
+        'controlType': 'ChartRangeFilter',
+        'containerId': 'chart_range_slider_div',
+        'options': {
+          'filterColumnLabel': 'Date',
+          'enableInteractivity': false,
+          'chartArea': {
+            'height': '100%'
+          },
+          'legend': {
+            'position': 'none'
+          },
+          'hAxis': {
+            'textPosition': 'in'
+          },
+          'vAxis': {
+            'textPosition': 'none',
+            'gridlines': {
+              'color': 'none'
+            }
+          }
+        }
+      });
+      var columnchart = new google.visualization.ChartWrapper({
+        chartType: 'ColumnChart',
+        containerId: 'columnchart_div'
+      });
+
+      var linechart = new google.visualization.ChartWrapper({
+        chartType: 'LineChart',
+        containerId: 'linechart_div'
+      });
+
+
+
+      var linedashboard = new google.visualization.Dashboard(document.getElementById('linedashboard_div')).bind(chartRangeSlider, linechart).draw(data)
+
+      var columndashboard = new google.visualization.Dashboard(document.getElementById('columndashboard_div')).bind(chartRangeSlider, columnchart).bind(chartRangeSlider, linechart).draw(data)
+
+      changeYScaleLog = function() {
+        linechart.setOption('vAxis.logScale', true);
+        linechart.draw();
+      }
+    }
+  </script>
+  <script>
+
+$(document).ready(function(){
+  $("#pls").click(function(){
+    $("#columndashboard_div").attr('id', 'linedashboard_div');
+    $('#columnchart_div').hide();
+    $('#linechart_div').show();
+  });
+});
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="row">
+      <div class="col-6">
+        <h1>Data Somethings</h1>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </div>
+  <br>
+  <div id="columndashboard_div" style="border: 1px solid #ccc">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-5">
+          <div style="height:500px; width:100%; float-left: 20px; border:1px solid #ccc; overflow:auto;">
+            <div class="tab">
+              <button class="tablinks" onclick="openTab(event, 'Charts')" id="defaultOpen">Charts</button>
+              <button class="tablinks" onclick="openTab(event, 'Controls')">Controls</button>
+            </div>
+
+            <div id="Charts" class="tabcontent">
+              <div class="graphtab">
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Line')" id="default1Open">Line</button>
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Column')">Column</button>
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Bar')">Bar</button>
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Scatter')">Scatter</button>
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Pie')">Pie</button>
+                <button class="graphtablinks" onclick="openGraphTypes(event, 'Area')">Area</button>
+              </div>
+
+              <div id="Line" class="graphtabcontent">
+                <input type="image" src="https://i.imgur.com/fEDTOXM.png?1" id="pls"/>
+                <br>
+                <input type="image" src="https://i.imgur.com/XVPQ0oK.png" />
+                <br>
+                <input type="image" src="https://i.imgur.com/vozFkMq.png" />
+                <br>
+                <input type="image" src="https://i.imgur.com/KkzUbxn.png" />
+              </div>
+
+              <div id="Column" class="graphtabcontent">
+                <p>Column Chart Types</p>
+              </div>
+
+              <div id="Bar" class="graphtabcontent">
+                <p>Bar Chart Types</p>
+              </div>
+
+              <div id="Scatter" class="graphtabcontent">
+                <p>Scatter Chart Types</p>
+              </div>
+
+              <div id="Pie" class="graphtabcontent">
+                <p>Pie Chart Types</p>
+              </div>
+
+              <div id="Area" class="graphtabcontent">
+                <p>Area Chart Types</p>
+              </div>
+            </div>
+
+            <div id="Controls" class="tabcontent">
+              <p>Put the student controls to modify the graph here</p>
+              <br>
+              <table>
+                <tr>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="xAxisLog" value="changeXLog"></form>
+                  </td>
+                  <td style="padding-left: 5px;">X Axis Log Scale
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="yAxisLog" value="changeYLog"></form>
+                  </td>
+                  <td style="padding-left: 5px;" onclick="changeYScaleLog();">Y Axis Log Scale
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="xAxisDirection" value="changeXDirection"></form>
+                  </td>
+                  <td style="padding-left: 5px;">X Axis Reverse Direction
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="yAxisDirection" value="changeYDirection"></form>
+                  </td>
+                  <td style="padding-left: 5px;">Y Axis Reverse Direction
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <form action="/action_page.php"><input type="checkbox" id="vOrientation" value="changeVOrientation"></form>
+                  </td>
+                  <td style="padding-left: 5px;">Vertical Orientation
+                  </td>
+                </tr>
+              </table>
+              <div class="row">
+                <div class="col-12" style="color:white; background-color:purple; padding:5px;">
+                  <h4>Chart</h4>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-3">
+                  <h6>Title</h6>
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" id="graphTitle" placeholder="Untitled">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-3">
+                  <h6>Legend</h6>
+                </div>
+                <div class="col-9">
+                  <select class="form-control" id="legendPos">
+                    <option>Right</option>
+                    <option>Left</option>
+                    <option>Top</option>
+                    <option>Bottom</option>
+                    <option>Inside</option>
+                    <option>None</option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-10">
+                  <h6> Background </h6>
+                </div>
+                <div class="col-2">
+                  <input type="color" id="backgroundcolor" name="backgrdcolor" value="#FFFFFF">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-6" style="color:white; background-color:purple; padding:5px;">
+                  <h4>Axis</h4>
+                </div>
+                <div class="col-6" style="color:white; background-color:purple; padding:5px;">
+                  <select class="form-control" id="selectAxis">
+                    <option>Horizontal</option>
+                    <option>Vertical</option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-3">
+                  <h6>Title</h6>
+                </div>
+                <div class="col-9">
+                  <input type="text" class="form-control" id="graphTitle" placeholder="Untitled">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-7">
+          <div id="columnchart_div" style="width: 700px; height: 700px;">
+          </div>
+          <div id="linechart_div" style="width: 700px; height: 700px; display:none;">
+          </div>
+          <div id="chart_range_slider_div" style="width: 700px; height: 50px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="footer">
+    <div class="row">
+      ...
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("default1Open").click();
+    }
+
+    function openGraphTypes(evt, chartType) {
+      var i, graphtabcontent, graphtablinks;
+      graphtabcontent = document.getElementsByClassName("graphtabcontent");
+      for (i = 0; i < graphtabcontent.length; i++) {
+        graphtabcontent[i].style.display = "none";
+      }
+      graphtablinks = document.getElementsByClassName("graphtablinks");
+      for (i = 0; i < graphtablinks.length; i++) {
+        graphtablinks[i].className = graphtablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(chartType).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
